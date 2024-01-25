@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+</head>
+<body>
+
+<script>
+  var weightInput = prompt("กรุณากรอกน้ำหนัก (kg):");
+  var heightInput = prompt("กรุณากรอกส่วนสูง (cm):");
+
+  var weight = parseFloat(weightInput);
+  var height = parseFloat(heightInput) / 100;
+
+  var bmi = weight / (height * height);
+
+  if (bmi < 18.5) {
+    alert("BMI: " + bmi.toFixed(2) + "\nผอม");
+  } else if (bmi >= 18.5 && bmi <= 22.9) {
+    alert("BMI: " + bmi.toFixed(2) + "\nปรกติ");
+  } else if (bmi >= 23 && bmi <= 24.9) {
+    alert("BMI: " + bmi.toFixed(2) + "\nท้วม");
+  } else if (bmi >= 25 && bmi <= 29.9) {
+    alert("BMI: " + bmi.toFixed(2) + "\nอ้วน");
+  } else {
+    alert("BMI: " + bmi.toFixed(2) + "\nอ้วนมาก");
+  }
+</script>
+
+</body>
+</html>
