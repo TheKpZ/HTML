@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #calculator-container {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px;
+      text-align: center;
+    }
+    
+  </style>
+    <script>
+      function calculateBMI() {
+        var weight = document.getElementById("Weight").value;
+        var height = document.getElementById("Height").value;
+
+        if (weight !== "" && height !== "") {
+            var bmi = parseFloat(weight) / Math.pow(parseFloat(height) / 100, 2);
+            displayBMIResult(bmi);
+        } else {
+            alert("กรุณากรอกน้ำหนักและส่วนสูง");
+        }
+    }
+
+      function displayBMIResult(bmi) {
+        var resultElement = document.getElementById("result");
+        resultElement.innerHTML = "Your BMI is " + bmi.toFixed(2);
+
+        if (bmi < 18.5) {
+            resultElement.innerHTML += "<br>ผอม";
+        } else if (bmi >= 18.5 && bmi <= 22.9) {
+            resultElement.innerHTML += "<br>ปกติ";
+        } else if (bmi >= 23 && bmi <= 24.9) {
+            resultElement.innerHTML += "<br>ท้วม";
+        } else if (bmi >= 25 && bmi <= 29.9) {
+            resultElement.innerHTML += "<br>อ้วน";
+        } else {
+            resultElement.innerHTML += "<br>อ้วนมาก";
+        }
+    }
+  </script>
+</head>
+<body>
+  <div id="calculator-container">
+    <p id="Hi"></p>
+    Weight : <input type="text" id="Weight"/><br>
+    Height : <input type="text" id="Height"/><br>
+    <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+    <p id="result">Your BMI is</p>
+  </div>
+</body>
+</html>
